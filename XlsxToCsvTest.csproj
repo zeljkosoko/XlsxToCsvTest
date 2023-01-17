@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Spire.XLS" Version="12.12.3" />
+    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="20.4.0.43" />
+    <PackageReference Include="Syncfusion.XlsIO.Net.Core" Version="20.4.0.43" />
   </ItemGroup>
 
 </Project>

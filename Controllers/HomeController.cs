@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using Spire.Xls;
+using Syncfusion.XlsIO;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,13 +13,13 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using XlsxToCsvTest.Models;
+using ExcelVersion = Syncfusion.XlsIO.ExcelVersion;
 
 namespace XlsxToCsvTest.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -37,6 +40,7 @@ namespace XlsxToCsvTest.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
         public void Download()
         {
             using (var client = new WebClient())
