@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Spire.Xls;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using XlsxToCsvTest.Models;
 
@@ -63,6 +65,18 @@ namespace XlsxToCsvTest.Controllers
                     }
                 }
             }
+        }
+
+        public void ConvertXLSXtoCSV()
+        {
+            string inputFile = Directory.GetCurrentDirectory() + "\\" + "rigCountsFinal.xlsx";
+            string outputFile = Directory.GetCurrentDirectory() + "\\" + "rigCountsCSV.csv";
+
+            Workbook workbook = new Workbook();
+            workbook.LoadFromFile(inputFile);
+
+            Worksheet sheet = workbook.Worksheets[0];
+            sheet.SaveToFile(outputFile, ",", Encoding.UTF8);
         }
     }
 }
